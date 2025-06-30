@@ -106,12 +106,13 @@ points:
             bottom:
               bind: [5, 24, 16.76, 0]
               rowpin: P2
+              tags: [key, tenting_bot]
             home:
               rowpin: P3
             top:
               bind: [0, 5, 5, 5]
               rowpin: P10
-              tags: [key, bumper_right]
+              tags: [key, tenting_top]
 
     # thumb zone
     thumb:
@@ -510,6 +511,27 @@ outlines:
     - what: circle
       radius: 3.25
 
+  _tenting:
+    - what: rectangle
+      size: [56.25, 14.25]
+
+
+  _tenting_top:
+    - what: outline
+      name: _tenting
+      where: tenting_top
+      adjust.shift: [-40, 0]
+
+  _tenting_bot:
+    - what: outline
+      name: _tenting
+      where: tenting_bot
+      adjust.shift: [-40, 0]
+
+  _tentings:
+    - _tenting_top
+    - _tenting_bot
+
   _bumpers_left:
     - what: outline
       name: _bumper
@@ -620,27 +642,27 @@ cases:
   _countersunk_screw:
     - what: outline
       name: _countersink1
-      extrude: 0.2
+      extrude: 1.2
     - what: outline
       name: _countersink2
       extrude: 0.2
-      shift: [0, 0, 0.2]
+      shift: [0, 0, 1.2]
     - what: outline
       name: _countersink3
       extrude: 0.2
-      shift: [0, 0, 0.4]
+      shift: [0, 0, 1.4]
     - what: outline
       name: _countersink4
-      extrude: 0.2
-      shift: [0, 0, 0.6]
+      extrude: 0.21
+      shift: [0, 0, 1.59]
     - what: outline
       name: _countersink5
-      extrude: 0.2
-      shift: [0, 0, 0.8]
+      extrude: 0.21
+      shift: [0, 0, 1.79]
     - what: outline
       name: _screw_shaft
       extrude: 2.2
-      shift: [0, 0, 1]
+      shift: [0, 0, 2]
 
   _flat_screw:
     - what: outline
@@ -741,50 +763,54 @@ cases:
   _bottom:
     - what: outline
       name: pcb_fill
-      extrude: 3.2
+      extrude: 4.2
     - what: outline
       name: _switch_holes
       extrude: 1.3
-      shift: [0, 0, 1.9]
+      shift: [0, 0, 2.9]
       operation: subtract
     - what: outline
       name: _diode_hollow
       extrude: 1.4
-      shift: [0, 0, 1.8]
+      shift: [0, 0, 2.8]
       operation: subtract
     - what: outline
       name: _battery_cutout_under
       extrude: 2.4
-      shift: [0, 0, 0.8]
+      shift: [0, 0, 1.8]
       operation: subtract
     - what: outline
       name: _xiao_cutout
       extrude: 2.5
-      shift: [0, 0, 0.7]
+      shift: [0, 0, 1.7]
       operation: subtract
     - what: outline
       name: _xiao_cutout_wall
       extrude: 1.2
-      shift: [0, 0, 2]
+      shift: [0, 0, 3]
       operation: subtract
     - what: outline
       name: _xiao_cutout_solder
       extrude: 0.4
-      shift: [0, 0, 1.6]
+      shift: [0, 0, 2.6]
       operation: subtract
     - what: outline
       name: _reset_hollow
       extrude: 1.8
-      shift: [0, 0, 1.4]
+      shift: [0, 0, 2.4]
       operation: subtract
     - what: outline
       name: _power_hollow
       extrude: 1.6
-      shift: [0, 0, 1.6]
+      shift: [0, 0, 2.6]
       operation: subtract
     - what: outline
       name: _bumpers
       extrude: 1
+      operation: subtract
+    - what: outline
+      name: _tentings
+      extrude: 2
       operation: subtract
     - -_countersunk_screw
 
@@ -793,7 +819,7 @@ cases:
     - what: outline
       name: socket_hollow_right_board
       extrude: 2
-      shift: [0, 0, 1.2]
+      shift: [0, 0, 2.2]
       operation: subtract
 
   bottom_left:
@@ -801,7 +827,7 @@ cases:
     - what: outline
       name: socket_hollow_left_board
       extrude: 2
-      shift: [0, 0, 1.2]
+      shift: [0, 0, 2.2]
       operation: subtract
 
 pcbs:
